@@ -127,7 +127,7 @@ class FloatAttr(Attr):
         if result is None and isinstance(instance, (JUnitXml, TestSuite)):
             instance.update_statistics()
             result = super(FloatAttr, self).__get__(instance, cls)
-        return float(result.replace(",", "")) if result else None
+        return float(result.replace(",", "").replace("s","")) if result else None
 
     def __set__(self, instance, value):
         if not (isinstance(value, float) or isinstance(value, int)):
